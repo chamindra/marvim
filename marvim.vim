@@ -27,8 +27,9 @@
 "   repository in your home directory. Based on the OS it will be 
 "   located as follows:
 "
-"   UNIX      ~/.marvim  
+"   LINUX     ~/.marvim  
 "   WINDOWS   C:\Document and Settings\Username\marvim 
+"   MAC OSX   ~/.marvim  
 "
 " o (optional) Copy predefined macro/template directories into the base 
 "   marvin macro directory. Marvim uses recursive directory search so 
@@ -309,7 +310,7 @@ function! Marvim_template_store()
 
     call Marvim_file_save(l:template_name, l:listtmp, s:text)
     
-    echo 'Template '.l:template_name.' Stored'
+    echo ' Template '.l:template_name.' Stored'
 
 endfunction
 
@@ -323,7 +324,7 @@ function! Marvim_macro_store()
 
     call Marvim_file_save(l:macro_name, l:listtmp, s:ext)
     " clear the command line
-    echo 'Macro '.l:macro_name.' Stored'
+    echo ' Macro '.l:macro_name.' Stored'
 
 endfunction
 
@@ -431,7 +432,7 @@ function! Marvim_search()
 
         call Marvim_file_run(l:macro_file)
 
-        echo 'Macro '.l:macro_name.' Run'
+        echo ' Macro '.l:macro_name.' Run'
 
     endif
 
