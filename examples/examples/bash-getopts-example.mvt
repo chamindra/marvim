@@ -1,0 +1,9 @@
+while getopts ":wf" opt; do 
+	case $opt in 
+		f ) CMD="find";;
+		w ) CMD="web";;
+	esac
+done
+
+eval TAIL='$'$OPTIND 
+
