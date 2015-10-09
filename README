@@ -98,11 +98,11 @@ you source the marvim.vim script (don't worry about location if
 the script is in the vim plugin directory). 
 
   " to change the macro storage location use the following 
-  let marvim_store = '/usr/local/share/projectX/marvim' 
-  let marvim_find_key = '<Space>' " change find key from <F2> to 'space'
-  let marvim_store_key = 'ms'     " change store key from <F3> to 'ms'
-  let marvim_register = 'c'       " change used register from 'q' to 'c'
-  let marvim_prefix = 0           " disable default syntax based prefix
+  let g:marvim_store = '/usr/local/share/projectX/marvim' 
+  let g:marvim_find_key = '<Space>' " change find key from <F2> to 'space'
+  let g:marvim_store_key = 'ms'     " change store key from <F3> to 'ms'
+  let g:marvim_register = 'c'       " change used register from 'q' to 'c'
+  let g:marvim_prefix = 0           " disable default syntax based prefix
 
   source $HOME/marvim.vim   " omit if marvim.vim is in the plugin dir
 
