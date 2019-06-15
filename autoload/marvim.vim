@@ -3,7 +3,7 @@
 let s:macro_file_extension = '.mv'.strpart(v:version,0,1)
 " template extension
 let s:template_extension = '.mvt'
-" The path seperator for the specific OS.
+" The path separator for the specific OS.
 if has('win16') || has('win32') || has('win64') || has ('win95')
     let s:path_seperator = '\'
 else " Assume UNIX based
@@ -195,7 +195,7 @@ endfunction
 " s:to_os_path end }}}
 
 " Function: marvim#completion {{{
-" @brief: hCustom completion function for s:input().
+" @brief: Custom completion function for s:input().
 " @description: This function completes the names of the possible macros and
 "  templates in the filesystem.
 " @param ArgLead: The current data to complete.
@@ -235,7 +235,7 @@ function! marvim#completion(ArgLead, CmdLine, CursorPos)
 
     endfor
 
-    " filter namespace list on postfix search string
+    " filter namespace list on post fix search string
     let l:complete_list = filter(l:c_list, 'v:val =~ "'.l:search_string.'"')
 
     return l:complete_list
