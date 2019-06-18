@@ -110,7 +110,7 @@ source $HOME/marvim.vim   " omit if marvim.vim is in the plugin dir
 ```
 
 ## Tips
-* <Space> can be very effective as the macro find key
+* Spacebar can be very effective as the macro find key
 * use the namespaces to organize a directory for each language
 * use a naming convention for your macros to make it easy to find. E.g.:
 
@@ -129,7 +129,7 @@ source $HOME/marvim.vim   " omit if marvim.vim is in the plugin dir
 ## Bugs, Patches, Help and Suggestions
 If you find any bugs, have new patches or need some help, please open an issue
 at the [repository at github](https://github.com/chamindra/marvim) or send an
-email to chamindra [at] opensource.lk and put the word marvim in the subject
+email to chamindra [at] gmail.com and put the word marvim in the subject
 line. Also we welcome you to share your repositories.
 
 "Freeze? I'm a robot, not a refrigerator" - Marvin the Paranoid Android
