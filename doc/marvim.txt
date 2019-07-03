@@ -77,7 +77,9 @@ Overview:~
 
   |loaded_marvim|...............Disable the plugin.
   |marvim_register|.............Register to use in marvim.
+  |marvim_use_find_key|.........Flag to use/not use the marvim search.
   |marvim_find_key|.............Key to activate marvim search.
+  |marvim_use_store_key|........Flag to use/not use the marvim store.
   |marvim_store_key|............Key to activate marvim store.
   |marvim_prefix|...............Flag to use/not use a prefix with the filetype.
   |marvim_store|................Path to the base directory of the plugin.
@@ -97,15 +99,31 @@ Detailed descriptions and default values:~
     with this register.
     This must be a valid regular register value. I.e., a single lower letter.
 
+                                                      *'g:marvim_use_find_key'*
+'marvim_use_find_key'    string (default: v:true)
+                         global
+    A flag to indicate whether the marvim_find_key mapping would be use. To
+    avoid mapping the find key set this value to v:false or 0.
+
                                                           *'g:marvim_find_key'*
 'marvim_find_key'    string (default: '<F2>')
                      global
     The keys to use to activate the search function of marvim.
+    Set this key to '' or use g:marvim_use_find_key to not map this function
+    at all.
+
+                                                     *'g:marvim_use_store_key'*
+'marvim_use_store_key'    string (default: v:true)
+                          global
+    A flag to indicate whether the marvim_store_key mapping would be use. To
+    avoid mapping the store key set this value to v:false or 0.
 
                                                          *'g:marvim_store_key'*
 'marvim_store_key'   string (default: '<F3>')
                      global
     The keys to use for storing a new marco/template into the repository.
+    Set this key to '' or use g:marvim_use_store_key to not map this function
+    at all.
 
                                                             *'g:marvim_prefix'*
 'marvim_prefix'      boolean (default: 1)
