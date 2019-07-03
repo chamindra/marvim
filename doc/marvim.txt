@@ -87,51 +87,51 @@ Overview:~
 -------------------------------------------------------------------------------
 Detailed descriptions and default values:~
 
-                                                            *'g:loaded_marvim'*
+                                              *loaded_marvim* *'g:loaded_marvim'*
 'loaded_marvim'      boolean (default: 0)
                      global
     An option to disable the loading of marvim completely.
 
-                                                          *'g:marvim_register'*
+                                          *marvim_register* *'g:marvim_register'*
 'marvim_register'    string (default: 'q')
                      global
     The register to use as Marvin's register. Any macro operation would run
     with this register.
     This must be a valid regular register value. I.e., a single lower letter.
 
-                                                      *'g:marvim_use_find_key'*
+                                  *marvim_use_find_key* *'g:marvim_use_find_key'*
 'marvim_use_find_key'    string (default: v:true)
                          global
     A flag to indicate whether the marvim_find_key mapping would be use. To
     avoid mapping the find key set this value to v:false or 0.
 
-                                                          *'g:marvim_find_key'*
+                                          *marvim_find_key* *'g:marvim_find_key'*
 'marvim_find_key'    string (default: '<F2>')
                      global
     The keys to use to activate the search function of marvim.
     Set this key to '' or use g:marvim_use_find_key to not map this function
     at all.
 
-                                                     *'g:marvim_use_store_key'*
+                                *marvim_use_store_key* *'g:marvim_use_store_key'*
 'marvim_use_store_key'    string (default: v:true)
                           global
     A flag to indicate whether the marvim_store_key mapping would be use. To
     avoid mapping the store key set this value to v:false or 0.
 
-                                                         *'g:marvim_store_key'*
+                                        *marvim_store_key* *'g:marvim_store_key'*
 'marvim_store_key'   string (default: '<F3>')
                      global
     The keys to use for storing a new marco/template into the repository.
     Set this key to '' or use g:marvim_use_store_key to not map this function
     at all.
 
-                                                            *'g:marvim_prefix'*
+                                              *marvim_prefix* *'g:marvim_prefix'*
 'marvim_prefix'      boolean (default: 1)
                      global
     Decide whether to use the filetype prefix when storing/searching for
     macros and templates in the system.
 
-                                                             *'g:marvim_store'*
+                                                *marvim_store* *'g:marvim_store'*
 'marvim_store'       string (default: '~/.marvim')
                      global
     The base directory for the marvim repository to use. Every file would be
