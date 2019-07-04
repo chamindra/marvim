@@ -156,6 +156,10 @@ TIPS                                                              *marvim-tips*
 * share your marvim marco stores with each other and also with the
   central repository at the plugin in github.
 
+* You can use wildcards for macros names (when searching for them). It can
+  let you type only part of the macro file name. For info on the wildcards
+  See |wildcards| for the use of special characters.
+
 ===============================================================================
 CHANGELOG                                                    *marvim-changelog*
 
