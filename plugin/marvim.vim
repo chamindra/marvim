@@ -13,8 +13,16 @@ if !exists('g:marvim_register')
     let g:marvim_register = 'q'
 endif
 
+if !exists('g:marvim_use_find_key')
+    let g:marvim_use_find_key = v:true
+endif
+
 if !exists('g:marvim_find_key')
     let g:marvim_find_key = '<F2>'
+endif
+
+if !exists('g:marvim_use_store_key')
+    let g:marvim_use_store_key = v:true
 endif
 
 if !exists('g:marvim_store_key')
@@ -46,10 +54,15 @@ endif
 " default values end }}}
 
 " Set mappings. {{{
-execute 'nnoremap ' . g:marvim_store_key . ' :call marvim#macro_store()<CR>'
-execute 'vnoremap ' . g:marvim_store_key . ' y:call marvim#template_store()<CR>'
-execute 'nnoremap ' . g:marvim_find_key . ' :call marvim#search()<CR>'
-execute 'vnoremap ' . g:marvim_find_key . ' :norm@'.g:marvim_register.'<CR>'
+if g:marvim_use_store_key && !empty(g:marvim_store_key)
+    execute 'nnoremap ' . g:marvim_store_key . ' :call marvim#macro_store()<CR>'
+    execute 'vnoremap ' . g:marvim_store_key . ' y:call marvim#template_store()<CR>'
+endif
+
+if g:marvim_use_find_key && !empty(g:marvim_find_key)
+    execute 'nnoremap ' . g:marvim_find_key . ' :call marvim#search()<CR>'
+    execute 'vnoremap ' . g:marvim_find_key . ' :norm@'.g:marvim_register.'<CR>'
+endif
 
 if has('menu')
     menu &Macro.&Find :call marvim#search()<CR>
