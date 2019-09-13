@@ -148,7 +148,7 @@ function! s:run_file(file_name)
 
         " read the macro file into the register and run it
         let l:macro_content = readfile(a:file_name,'b')
-        call setreg(g:marvim_register, l:macro_content[0])
+        call setreg(g:marvim_register, l:macro_content[0], 'c')
         silent execute 'normal @' . g:marvim_register
         return 1
 
