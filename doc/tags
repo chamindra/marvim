@@ -9,6 +9,7 @@
 'g:marvim_use_store_key'	marvim.txt	/*'g:marvim_use_store_key'*
 'marvim'	marvim.txt	/*'marvim'*
 loaded_marvim	marvim.txt	/*loaded_marvim*
+'marvim'	marvim.txt	/*'marvim'*
 marvim-call-macro	marvim.txt	/*marvim-call-macro*
 marvim-changelog	marvim.txt	/*marvim-changelog*
 marvim-contents	marvim.txt	/*marvim-contents*

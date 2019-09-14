@@ -61,29 +61,27 @@ function! s:get_filename(full_file_name)
 endfunction
 " s:get_filename end }}}
 
-" Function: s:ns_to_filename {{{
-" @brief: Get the file path from the marvim path syntax.
+" Function: s:ns_to_filenames {{{
+" @brief: Get the file paths from the marvim path syntax.
 " @description: This function would change any ':' in the file name to the
 "  regular OS separator, to make the string a valid file name string. Later, it
 "  would add the marvim base directory to it, and add the needed extension. For
 "  example, it would change the string of "php:deletebrackets" to be
 "  "/home/user/.marvim/php/deletebrackets.mvt"
-" @param marvim_path: The string used in marvim to represent the file path. 
+" @param marvim_path: The string used in marvim to represent the file path.
 "  E.g. php:deletebrackets
-" @returns: The name of the file if there is one. In case there is no such 
-"  file, the function would return an empty string, in case there would be
-"  multiple matches, the function would return all of them, with glob 
-"  separator.
-function! s:ns_to_filename(marvim_path)
+" @returns: A list with all the file paths that matches the given pattern. In
+"  case there won't be any matching files the list would be empty.
+function! s:ns_to_filenames(marvim_path)
 
     let l:name = s:to_os_path(a:marvim_path)
 
     let l:prefix = g:marvim_store . l:name
 
-    return glob(l:prefix.".mv?")
+    return glob(l:prefix.".mv?", v:false, v:true)
 
 endfunction
-" s:ns_to_filename end }}}
+" s:ns_to_filenames end }}}
 
 " Function: s:save_file {{{
 " @brief: Save the macro/template file to the disk.
@@ -185,14 +183,61 @@ endfunction
 " @brief: Change the ':' in the file name to be the line separator.
 " @param marvim_path: The path in the marvim format.
 " @returns: The path in the OS specific format.
-" @note: This is a very simple function, but it it used in many different 
+" @note: This is a very simple function, but it it used in many different
 "  places in the code, so it better be a function by itself.
 function! s:to_os_path(marvim_path)
 
     return tr(a:marvim_path, ":", s:path_seperator)
 
 endfunction
+
 " s:to_os_path end }}}
+
+" Function: s:list_decide {{{
+" @brief: Let the user choose its wanted entry from the given list.
+" @param to_choose_from: The list to choose the given entry from.
+" @returns: The entry chosen from the list.
+" @note: This function gets input from the user, and it would wait for it.
+" @note: In case the list would be empty, the function would return empty
+"  string.
+function! s:list_decide(to_choose_from)
+
+    " Handle the special cases of empty or single-entry list.
+    if empty(a:to_choose_from)
+        return ''
+    endif
+    if len(a:to_choose_from) == 1
+        return a:to_choose_from[0]
+    endif
+
+    " Print the list for the user.
+    echo "\nMore than one macro available."
+    echo "Available macros:"
+    let l:index = 0
+    for l:item in a:to_choose_from
+        let l:message = "[" . string(l:index) . "] - " . string(l:item)
+        echo l:message
+        let l:index += 1
+    endfor
+
+    " Get the user wanted input.
+    let l:user_decision = input("Enter wanted macro (empty to cancel): ")
+    if empty(l:user_decision)
+        return ''
+    endif
+
+    let l:wanted_macro = get(a:to_choose_from, l:user_decision, '')
+
+    " Check if the entry is valid and return the wanted input.
+    if empty(l:wanted_macro)
+        call s:new_line_echom("Invalid macro index. No macro run")
+        return ''
+    endif
+
+    return l:wanted_macro
+
+endfunction
+" s:list_decide end }}}
 
 " Function: marvim#completion {{{
 " @brief: Custom completion function for s:input().
@@ -299,7 +344,7 @@ endfunction
 
 " Function: marvim#search {{{
 " @brief: Search for a new macro/template in the repository.
-" @description: Get the name of the macro/template file from the user and try 
+" @description: Get the name of the macro/template file from the user and try
 "  to run it. This function uses the input function to get input from the user.
 " @returns: None.
 " @note This function prints the result back to the user.
@@ -311,18 +356,28 @@ function! marvim#search()
     " Try to run the given input. Output the results to the user.
     if !empty(l:macro_name)
 
-        let l:macro_file = s:ns_to_filename(l:macro_name)
+        let l:macro_files = s:ns_to_filenames(l:macro_name)
+        if empty(l:macro_files)
 
-        let l:run_file_return = s:run_file(l:macro_file)
-        if (l:run_file_return == 0)
             call s:new_line_echom('Macro ' . l:macro_name . ' does not exist.')
-        elseif (l:run_file_return == 1)
-            call s:new_line_echom('Macro ' . l:macro_name . ' Run')
-        elseif (l:run_file_return == 2)
-            call s:new_line_echom('Template ' . l:macro_name . ' Run')
-        elseif (l:run_file_return == 3)
-            call s:new_line_echom('Got file with invalid extension.')
+
+        else
+
+            let l:macro_file = s:list_decide(l:macro_files)
+
+            if !empty(l:macro_file)
+                let l:run_file_return = s:run_file(l:macro_file)
+                if (l:run_file_return == 1)
+                    call s:new_line_echom('Macro ' . l:macro_file . ' Run')
+                elseif (l:run_file_return == 2)
+                    call s:new_line_echom('Template ' . l:macro_file . ' Run')
+                elseif (l:run_file_return == 3)
+                    call s:new_line_echom('Got file with invalid extension.')
+                endif
+            endif
+
         endif
+
     else
         call s:new_line_echom('No macro name specify, not runnig anything.')
     endif

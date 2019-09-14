@@ -126,6 +126,10 @@ source $HOME/marvim.vim   " omit if marvim.vim is in the plugin dir
 * share your marvim marco stores with each other and also with the
   central repository at the plugin in github.
 
+* You can use wildcards for macros names (when searching for them). It can
+  let you type only part of the macro file name. For info on the wildcards
+  See |wildcards| for the use of special characters.
+
 ## Bugs, Patches, Help and Suggestions
 If you find any bugs, have new patches or need some help, please open an issue
 at the [repository at github](https://github.com/chamindra/marvim) or send an
