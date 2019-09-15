@@ -28,12 +28,34 @@ git clone https://github.com/chamindra/marvim.git ~/.vim/bundle/marvim
 ```
 
 ### Manual
-* Download Marvim to your VIM plugin ($VIMRUNTIME/plugin) directory
-  or source it explicitly. Below is an example if you place it in
-  the home directory
-  ``` vim
-  source $HOME/marvim.vim
-  ```
+* Download the plugin
+    * For neovim or vim 8 and above:
+        * Clone the repository into the plugin directory. Example for such directory
+            is:
+        ```bash
+        ~/.vim/pack/bundle/start/marvim
+        ```
+        You can change parts of the name of the directory, or parts of its path.
+        You can read more about this directory
+        [here](https://vi.stackexchange.com/questions/613/how-do-i-install-a-plugin-in-vim-vi)
+        and in vim's help on packages.
+    * For vim before 8:
+        * Clone the repository into the plugins directory in your home:
+          ```bash
+          ~/.vim/plugin
+          ```
+        * Note that this make the plugin always load all its files. It will
+            probably won't affect you (since it is small), but if you want it to
+            load the relevant parts only when needed, you will need to separate
+            the repository. Put any file in the repository in a directory with
+            the same name in the ~/.vim directory.
+            For example:
+            ```bash
+            mkdir -p ~/.vim/autoload
+            mv $MARVIM_DIRECTORY/autoload/marvim.vim ~/.vim/autoload
+            ```
+            (if you are starting to do this, it is probably bettor to download
+            one of the plugin manegers plugin (like Vundle or Pathogen).
 
 * Start vim and this will automatically create the base marvim macro
   repository in your home directory. Based on the OS it will be
