@@ -161,6 +161,12 @@ line. Also we welcome you to share your repositories.
 "Freeze? I'm a robot, not a refrigerator" - Marvin the Paranoid Android
 
 ## Change Log
+
+### v0.5
+* Refactorted to support latest plugin format of VIM 8
+* Added help files and changed the readme to be markdown
+* Fixed issues with files with multiple dots in them and other fixes
+* Kudos to @omrisarig13 for VIM 8 refactor 
 ### v0.4
 * Now supports autocompletion when searching for macros
 * The filetype gives the default namespace for storage and retrieval
