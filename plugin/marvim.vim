@@ -48,6 +48,9 @@ if exists('g:marvim_store')
     else
         let g:marvim_store = g:marvim_store
     endif
+    " Expend the variable according to the path in the computer (to handle ~ for
+    " example).
+    let g:marvim_store = expand(g:marvim_store)
 else
     let g:marvim_store = s:marvim_store
 endif
