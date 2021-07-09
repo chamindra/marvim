@@ -83,20 +83,20 @@ git clone https://github.com/chamindra/marvim.git ~/.vim/bundle/marvim
 ## Usage:
 * Store a new macro to the repository
     1. Record macro as usual into q register (i.e. qq..<macro keystrokes>..q)
-    2. Press save macro key <F3> (default) in normal mode
+    2. Press save macro key <kbd>F3</kbd> (default) in normal mode
     3. Enter the macro name when prompted after the prefix (a prefix will be
        provided based on the filetype)
     4. Macro is now store in the repository
 
 * Save template into repository
     1. Select area you want to save in visual mode
-    2. Press the macro save button <F3> (default) in visual mode
+    2. Press the macro save button <kbd>F3</kbd> (default) in visual mode
     3. Enter the template name when prompted (a prefix will be provided based
        on the filetype)
     4. Template is now saved in repository
 
 * Recall macro/template through a search
-    1. Press the macro find key <F2> (default) in normal mode
+    1. Press the macro find key <kbd>F2</kbd> (default) in normal mode
     2. Enter a search string when prompted (a prefix will be put by default,
        Which can be deleted)
     3. Press <Tab> or <Control-D> to auto-complete until you find the macro
@@ -104,7 +104,7 @@ git clone https://github.com/chamindra/marvim.git ~/.vim/bundle/marvim
 
 * Replay last loaded macro on multiple lines for each line
     1. Select the area you want the macro to run on in visual mode
-    2. Press the macro find key <F3> (default) in visual mode
+    2. Press the macro find key <kbd>F3</kbd> (default) in visual mode
     3. Macro in q register is replayed for every line
 
 ## Macro Namespace:
